@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome KAIA to GasPass — D'CENT</title>
 
+  <!-- Social OG Tags -->
+  <meta property="og:title" content="Welcome KAIA to GasPass — Onboarding Reward Quest" />
+  <meta property="og:description" content="Zero gas fees, full rewards. Hold 150+ USDT(Kaia), explore the ecosystem, and earn USDT rewards + an exclusive GasPass coupon." />
+  <meta property="og:image" content="https://assets.dcentwallet.com/image/banner/KaiaQuest.png" />
+  <meta property="og:url" content="https://link.dcentwallet.com/MyWallet/event/quest/kaia-super-earn" />
+  <meta property="og:type" content="website" />
+
+  <!-- QR Code 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #060b14;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 28px 24px;
+    }
+
+    .logo-text {
+      color: #27C4B8;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 480px;
+      padding: 0 24px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .campaign-banner {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .campaign-banner img {
+      width: 100%;
+      display: block;
+    }
+
+    .scan-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .scan-desc {
+      font-size: 14px;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .qr-container img,
+    .qr-container canvas {
+      display: block;
+    }
+
+    .qr-label {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    /* 혜택 요약 */
+    .benefits-compact {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .benefit-chip {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 10px 8px;
+      font-size: 12px;
+      color: #d1d5db;
+      text-align: center;
+    }
+
+    .benefit-chip .icon {
+      font-size: 14px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 17px 24px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.15s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 24px;
+      color: #374151;
+      font-size: 12px;
+    }
+
+    /* 모바일에서는 자동 리다이렉트되므로 숨길 내용 없음 */
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo-text">D'CENT Wallet</span>
+  </header>
+
+  <main>
+    <div class="campaign-banner">
+      <img
+        src="https://assets.dcentwallet.com/image/banner/KaiaQuest.png"
+        alt="Welcome KAIA to GasPass"
+      />
+    </div>
+
+    <h2 class="scan-title">QR 코드를 스캔하여<br />D'CENT 앱에서 참여하세요</h2>
+    <p class="scan-desc">
+      모바일에서 QR 코드를 스캔하면<br />
+      D'CENT 앱의 이벤트 페이지로 바로 이동합니다
+    </p>
+
+    <div class="qr-container">
+      <div id="qrcode"></div>
+      <span class="qr-label">D'CENT Wallet App</span>
+    </div>
+
+    <div class="benefits-compact">
+      <div class="benefit-chip">
+        <span class="icon">⛽</span>
+        <span>가스비 무료</span>
+      </div>
+      <div class="benefit-chip">
+        <span class="icon">💰</span>
+        <span>15,000 USDT</span>
+      </div>
+      <div class="benefit-chip">
+        <span class="icon">🎟️</span>
+        <span>GasPass 쿠폰</span>
+      </div>
+    </div>
+
+    <a
+      class="btn btn-secondary"
+      href="https://dcentwallet.com/features/GasPass"
+      target="_blank"
+      rel="noopener"
+    >
+      GasPass 더 알아보기
+    </a>
+  </main>
+
+  <footer>
+    &copy; 2025 IoTrust Co., Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    (function() {
+      // QR 코드에 표시할 링크 (서버에서 치환)
+      var qrLink = '{{QR_LINK}}'
+
+      // 모바일 감지 → 자동 리다이렉트
+      var ua = navigator.userAgent || ''
+      if (/Android|iPhone|iPad|iPod/i.test(ua)) {
+        location.href = qrLink
+        return
+      }
+
+      // 데스크톱: QR 코드 생성
+      new QRCode(document.getElementById('qrcode'), {
+        text: qrLink,
+        width: 200,
+        height: 200,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      })
+    })()
+  </script>
+
+</body>
+</html>
